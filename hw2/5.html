@@ -32,7 +32,105 @@ Infinity делать не нужно, однако, в случае если б
 <script>
   "use strict";
 
-  // Здесь пишем решение, данный комментарий необходимо стереть.
+  let result;
+  let a = 3;
+  let b = 15;
+
+  console.log("Первое число - " + a + ", второе число - " + b);
+
+  console.log("Сложение: " + mathOperation(a, b, "+"));
+  console.log("Вычитание: " + mathOperation(a, b, "-"));
+  console.log("Умножение: " + mathOperation(a, b, "*"));
+  console.log("Деление: " + mathOperation(a, b, "/"));
+
+  /**
+  * @description Функция вычисления результата одной из 4-х математических операций двух чисел
+  *
+  * @param { number } arg1 - Первое число
+  * @param { number } arg2 - Второе число
+  * @param { number } operation - Математическая операция
+  * @return { number } result - Результат вычисления
+  */
+
+  function mathOperation(arg1, arg2, operation) {
+    switch (operation) {
+      case "+":
+        result = sum(arg1, arg2);
+        break;
+      case "-":
+        result = diff(arg1, arg2);
+        break;
+      case "*":
+        result = mult(arg1, arg2);
+        break;
+      case "/":
+        result = div(arg1, arg2);
+        break;
+      default:
+        result = NaN;
+    }
+
+    return result;
+  }
+
+  /**
+  * @description Функция сложения двух чисел
+  *
+  * @param { number } num1 - Первое число
+  * @param { number } num2 - Второе число
+  * @return { number } result - Результат вычисления
+  */
+
+  function sum(num1, num2) {
+    result = num1 + num2;
+    return result;
+  }
+
+  /**
+   * @description Функция вычитания двух чисел
+   *
+   * @param {number} num1 - Первое число
+   * @param {number} num2- Второе число
+   * @return {number} result - Результат вычисления
+   */
+
+  function diff(num1, num2) {
+    if (num1 > num2) {
+      result = num1 - num2;
+    } else if (num1 < num2) {
+      result = num2 - num1;
+    } else {
+      result = 0;
+    }
+
+    return result;
+  }
+
+  /**
+   * @description Функция произведения двух чисел
+   *
+   * @param {number} num1 - Первое число
+   * @param {number} num2 - Второе число
+   * @return {number} result - Результат вычисления
+   */
+
+  function mult(num1, num2) {
+    result = num1 * num2;
+    return result;
+  }
+
+  /**
+   * @description Функция деления двух чисел
+   *
+   * @param {number} num1 - Первое число
+   * @param {number} num2 - Второе число
+   * @return {number} result - Результат вычисления
+   */
+
+  function div(num1, num2) {
+    result = num1 / num2;
+    return result;
+  }
 </script>
 </body>
 </html>

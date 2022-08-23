@@ -21,7 +21,20 @@
 <script>
   "use strict";
 
-  // Здесь пишем решение, данный комментарий необходимо стереть.
+  let a = +prompt("Введите число `a`:");
+  let b = +prompt("Введите число `b`:");
+  let result;
+
+  if (a > 0 && b > 0) {
+    result = a - b;
+    console.log("`a` и `b` положительные, результат " + result);
+  } else if (a < 0 && b < 0) {
+    result = a * b;
+    console.log("`a` и `b` отрицательные, результат " + result);
+  } else if (a < 0 && b > 0 || a > 0 && b < 0) {
+    result = a + b;
+    console.log("`a` и `b` разных знаков, результат " + result);
+  }
 </script>
 </body>
 </html>
