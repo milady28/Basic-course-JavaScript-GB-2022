@@ -39,7 +39,21 @@
     ],
   };
 
-  // Здесь пишем решение, данный комментарий необходимо стереть.
+  outputConsoleLog(1, post.author);
+  outputConsoleLog(2, post.comments[0].rating.dislikes);
+  outputConsoleLog(3, post.comments[1].userId);
+  outputConsoleLog(4, post.comments[1].text);
+
+  /**
+  * @description Функция вывода в консоль
+  *
+  * @param {number} taskNum - Номер задачи
+  * @param {number} value - Значение которое необходимо вывести в консоль
+  */
+
+  function outputConsoleLog(taskNum, value) {
+    console.log(taskNum + " - " + value);
+  }
 </script>
 </body>
 </html>
