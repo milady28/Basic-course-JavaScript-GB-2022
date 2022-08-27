@@ -50,7 +50,78 @@
 <script>
   "use strict";
 
-  // Здесь пишем решение, данный комментарий необходимо стереть.
+  const date = new Date();
+
+  // ES5
+  function PostES5(author, text, date) {
+    this.author = author;
+    this.text = text;
+    this.date = date;
+  }
+
+  PostES5.prototype.edit = function(newText) {
+    this.text = newText;
+  }
+
+  function AttachedPostES5(author, text, date, highlighted) {
+    PostES5.call(this, author, text, date);
+    this.highlighted = false;
+  }
+
+  AttachedPostES5.prototype = Object.create(PostES5.prototype);
+  AttachedPostES5.prototype.constructor = AttachedPostES5;
+
+  AttachedPostES5.prototype.makeTextHighlighted = function() {
+    this.highlighted = true;
+  }
+
+  console.log("Первоначальный экземпляр AttachedPostES5:");
+  let attachedPostES5 = new AttachedPostES5("Петя", "текст поста", date);
+  console.log(attachedPostES5);
+
+  console.log("Изменили текст с помощью метода edit:");
+  attachedPostES5.edit("новый текст поста");
+  console.log(attachedPostES5);
+
+  console.log("Подсвечиваем закрепленный текст с помощью метода makeTextHighlighted:");
+  attachedPostES5.makeTextHighlighted();
+  console.log(attachedPostES5);
+
+  // ES6
+  class PostES6 {
+    constructor(author, text, date) {
+      this.author = author;
+      this.text = text;
+      this.date = date;
+    }
+
+    edit(newText) {
+      this.text = newText;
+    }
+  }
+
+  class AttachedPostES6 extends PostES6 {
+    constructor(author, text, date, highlighted) {
+      super(author, text, date);
+      this.highlighted = false;
+    }
+
+    makeTextHighlighted() {
+      this.highlighted = true;
+    }
+  }
+
+  console.log("Первоначальный экземпляр AttachedPostES6:");
+  let attachedPostES6 = new AttachedPostES6("Катя", "текст поста 2", date);
+  console.log(attachedPostES6);
+
+  console.log("Изменили текст с помощью метода edit:");
+  attachedPostES6.edit("новый текст поста 2");
+  console.log(attachedPostES6);
+
+  console.log("Подсвечиваем закрепленный текст с помощью метода makeTextHighlighted:");
+  attachedPostES6.makeTextHighlighted();
+  console.log(attachedPostES6);
 </script>
 </body>
 </html>

@@ -31,7 +31,37 @@
 <script>
   "use strict";
 
-  // Здесь пишем решение, данный комментарий необходимо стереть.
+  class NumDigits {
+    constructor(units, dozens, hundreds) {
+      this.units = units;
+      this.dozens = dozens;
+      this.hundreds = hundreds;
+    }
+  }
+
+  /**
+   * Функция разбивает число по разрядам и передает их в объект
+   * @param {number} num - Число от 0 до 999 включительно
+   * @returns {object} Объект с разрядами или пустой объект в случае ошибки
+   */
+  function getDigitsOfNumber(num) {
+    let digits = [];
+    let numDigits = new NumDigits();
+
+    if (Number.isInteger(num) && num >= 0 && num < 1000) {
+      numDigits.units = num % 10;
+      numDigits.dozens = Math.floor(num / 10) % 10;
+      numDigits.hundreds = Math.floor(num / 100);
+    } else {
+      console.error("Введите целое положительное число от 0 до 999 включительно!");
+
+      numDigits = {};
+    }
+
+    return numDigits;
+  }
+
+  console.log(getDigitsOfNumber(789));
 </script>
 </body>
 </html>
