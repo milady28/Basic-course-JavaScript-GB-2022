@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Homework</title>
+</head>
+<body>
+<!--
+Обязательное задание.
+
+Необходимо из объекта, который лежит в константе post вывести значения, к
+которым приписан комментарий, в консоль.
+-->
+<script>
+  "use strict";
+
+  const post = {
+    author: "John", // вывести этот текст
+    postId: 23,
+    comments: [
+      {
+        userId: 10,
+        userName: "Alex",
+        text: "lorem ipsum",
+        rating: {
+          likes: 10,
+          dislikes: 2, // вывести это число
+        },
+      },
+      {
+        userId: 5, // вывести это число
+        userName: "Jane",
+        text: "lorem ipsum 2", // вывести этот текст
+        rating: {
+          likes: 3,
+          dislikes: 1,
+        },
+      },
+    ],
+  };
+
+  outputConsoleLog(1, post.author);
+  outputConsoleLog(2, post.comments[0].rating.dislikes);
+  outputConsoleLog(3, post.comments[1].userId);
+  outputConsoleLog(4, post.comments[1].text);
+
+  /**
+  * @description Функция вывода в консоль
+  *
+  * @param {number} taskNum - Номер задачи
+  * @param {number} value - Значение которое необходимо вывести в консоль
+  */
+
+  function outputConsoleLog(taskNum, value) {
+    console.log(taskNum + " - " + value);
+  }
+</script>
+</body>
+</html>
