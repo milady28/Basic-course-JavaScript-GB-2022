@@ -33,6 +33,10 @@
   "super-dropdown", необходимо использовать методы forEach и querySelectorAll и
   свойство classList у элементов.
    */
+  const dropdownItems = document.querySelectorAll(".dropdown-item");
+  dropdownItems.forEach(item => {
+    item.classList.add("super-dropdown");
+  });
 
 
   /*
@@ -40,12 +44,18 @@
   присутствует у этого элемента, либо добавить, если такого класса у элемента
   не было.
    */
+  const btn = document.querySelector(".btn");
+  const classBtn = "btn-secondary";
+
+  btn.classList.contains(classBtn) ? btn.classList.remove(classBtn) : btn.classList.add(classBtn);
 
 
   /*
   3. Необходимо удалить класс "dropdown-menu" у элемента, у которого
   присутствует класс "menu".
    */
+  const menu = document.querySelector(".menu");
+  menu.classList.remove("dropdown-menu");
 
 
   /*
@@ -53,22 +63,30 @@
   "dropdown" следующую разметку:
     <a href="#">link</a>
    */
+  const dropdown = document.querySelector("div.dropdown");
+  dropdown.insertAdjacentHTML('afterend', "<a href='#'>link</a>");
 
 
   /*
   5. У элемента с id "dropdownMenuButton" замените id на "superDropdown".
    */
+  const dropdownBtn = document.querySelector("#dropdownMenuButton");
+  dropdownBtn.setAttribute("id", "superDropdown");
 
 
   /*
   6. Добавьте атрибут data-dd со значением 3 элементу у которого существует
   атрибут "aria-labelledby" равный "dropdownMenuButton" используя dataset.
    */
+  const dataElem = document.querySelector("[aria-labelledby='dropdownMenuButton']");
+  dataElem.dataset.dd = 3;
 
 
   /*
   7. Удалите атрибут type у элемента с классом "dropdown-toggle".
    */
+  const toggle = document.querySelector(".dropdown-toggle");
+  toggle.removeAttribute("type");
 
 
   /*
@@ -77,7 +95,16 @@
   Вывод каждого атрибута и значений должен выглядеть следующим образом (пример):
   Атрибут "class" содержит значение "btn btn-secondary dropdown-toggle"
    */
+  const elems = document.querySelectorAll(".btn.dropdown-toggle");
 
+  elems.forEach(elem => {
+    const elemAttributes = elem.attributes;
+
+    for (var i = 0; i < elemAttributes.length; i++) {
+      console.log(`Атрибут "${elemAttributes[i].name}" содержит значение "${elemAttributes[i].value}"`);
+    }
+  });
+  
 
 </script>
 </body>
