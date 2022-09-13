@@ -42,18 +42,39 @@
   /*
   1. Установите всем элементам с классом "productName" размер шрифта 24px.
    */
+  const productsName = document.querySelectorAll(".productName");
+  
+  productsName.forEach(element => {
+    element.style.fontSize = "24px";
+  });
 
 
   /*
   2. Установите всем элементам с классом "product" внешний отступ справа 50px.
    */
+  const products = document.querySelectorAll(".product");
 
+  products.forEach(element => {
+    element.style.marginRight = "50px";
+  });
 
   /*
   3. При клике на кнопку "В корзину" название кнопки должно поменяться на
   "Добавлено" и кнопка должна стать неактивной.
    */
 
+  const cartBtns = document.querySelectorAll("button");
+
+  cartBtns.forEach(element => {
+    element.addEventListener("click", (evt) => {
+      changeCartBtn(evt.target);
+    });
+  });
+
+  function changeCartBtn(btn) {
+    btn.innerText = "Добавлено";
+    btn.disabled = "true";
+  }
 
   /*
   4. Создайте полную (глубокую) копию элемента с классом product, измените в
@@ -63,13 +84,21 @@
   отображенный товар на странице на созданную копию. У данной копии также
   должен правильно работать код из 3-го задания.
    */
-
+  const cloneProduct = document.querySelector(".product").cloneNode(true);
+  
+  cloneProduct.querySelector("img").src = "https://loremflickr.com/200/300/goods?lock=37";
+  cloneProduct.querySelector(".productName").innerText = "Товар 4";
+  document.querySelector('.product:last-of-type').replaceWith(cloneProduct);
 
   /*
   5. По истечении 2 секунд с момента открытия страницы первый товар должен быть
   удален из html.
    */
+  setTimeout(deleteFirstProdElem, 2000);
 
+  function deleteFirstProdElem() {
+    document.querySelector(".product").remove();
+  }
 
 </script>
 </body>
